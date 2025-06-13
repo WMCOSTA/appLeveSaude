@@ -1,0 +1,26 @@
+service: appLeveSaude
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+
+functions:
+  getAgendas:
+    handler: src/agenda/controller.getAgendas
+    events:
+      - http:
+          path: agendas
+          method: get
+          cors: true
+
+  postAgendamento:
+    handler: src/agendamento/controller.postAgendamento
+    events:
+      - http:
+          path: agendamento
+          method: post
+          cors: true
